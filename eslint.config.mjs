@@ -20,5 +20,5 @@ export default defineConfig([
       "tsdoc/syntax": "warn"
     },
   },
-  { ignores: ["dist/*"] },
+  { ignores: ["dist/*", "docs/*"] },
 ]);

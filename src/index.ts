@@ -10,8 +10,6 @@
  * ```
  */
 
-function add(firstNumber: number, secondNumber: number): number {
+export function add(firstNumber: number, secondNumber: number): number {
   return firstNumber + secondNumber;
 }
-
-console.log(add(1,7));
