@@ -3,6 +3,4 @@
 Aquí abajo colocaremos algunos badges de estado de herramientas que iremos utilizando
 a lo largo de la asignatura.
 
-## Status badges
-
 [![CI Tests](https://github.com/ULL-ESIT-INF-DSI-2526/theory-examples/actions/workflows/ci.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2526/theory-examples/actions/workflows/ci.yml)
