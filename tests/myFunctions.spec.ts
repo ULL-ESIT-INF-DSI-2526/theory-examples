@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { add, sub, div } from "../src/index";
+import { add, sub, div } from "../src/index.js";
 
 describe("add function tests", () => {
   test("add(1, 8) returns value 9", () => {
