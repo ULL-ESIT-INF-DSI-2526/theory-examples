@@ -1,8 +1,8 @@
 import express from "express";
 import "./db/mongoose.js";
-import { userRouter } from "./routers/user.js";
-import { noteRouter } from "./routers/note.js";
-import { defaultRouter } from "./routers/default.js";
+import { userRouter } from "./routes/user.js";
+import { noteRouter } from "./routes/note.js";
+import { defaultRouter } from "./routes/default.js";
 
 export const app = express();
 app.use(express.json());

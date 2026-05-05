@@ -53,7 +53,9 @@ noteRouter.get("/notes/:username", async (req, res) => {
       if (notes.length !== 0) {
         res.send(notes);
       } else {
-        res.status(404).send();
+        res.status(404).send({
+          error: "Notes not found"
+        });
       }
     }
   } catch (error) {
@@ -83,7 +85,9 @@ noteRouter.get("/notes/:username/:id", async (req, res) => {
       if (note) {
         res.send(note);
       } else {
-        res.status(404).send();
+        res.status(404).send({
+          error: "Note not found"
+        });
       }
     }
   } catch (error) {
@@ -110,7 +114,7 @@ noteRouter.patch("/notes/:username/:id", async (req, res) => {
 
       if (!isValidUpdate) {
         res.status(400).send({
-          error: "Update is not permitted",
+          error: "Update is not allowed",
         });
       } else {
         const note = await Note.findOneAndUpdate(
@@ -120,7 +124,7 @@ noteRouter.patch("/notes/:username/:id", async (req, res) => {
           },
           req.body,
           {
-            new: true,
+            returnDocument: 'after',
             runValidators: true,
           },
         ).populate({
@@ -131,7 +135,9 @@ noteRouter.patch("/notes/:username/:id", async (req, res) => {
         if (note) {
           res.send(note);
         } else {
-          res.status(404).send();
+          res.status(404).send({
+            error: "Note not found"
+          });
         }
       }
     }
@@ -162,7 +168,9 @@ noteRouter.delete("/notes/:username/:id", async (req, res) => {
       if (note) {
         res.send(note);
       } else {
-        res.status(404).send();
+        res.status(404).send({
+          error: "Note not found"
+        });
       }
     }
   } catch (error) {

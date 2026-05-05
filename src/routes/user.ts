@@ -26,7 +26,9 @@ userRouter.get("/users", async (req, res) => {
     if (users.length !== 0) {
       res.send(users);
     } else {
-      res.status(404).send();
+      res.status(404).send({
+        error: "Users not found"
+      });
     }
   } catch (error) {
     res.status(500).send(error);
@@ -47,7 +49,7 @@ userRouter.patch("/users", async (req, res) => {
 
     if (!isValidUpdate) {
       res.status(400).send({
-        error: "Update is not permitted",
+        error: "Update is not allowed",
       });
     } else {
       try {
@@ -57,7 +59,7 @@ userRouter.patch("/users", async (req, res) => {
           },
           req.body,
           {
-            new: true,
+            returnDocument: 'after',
             runValidators: true,
           },
         );
@@ -65,7 +67,9 @@ userRouter.patch("/users", async (req, res) => {
         if (user) {
           res.send(user);
         } else {
-          res.status(404).send();
+          res.status(404).send({
+            error: "User not found"
+          });
         }
       } catch (error) {
         res.status(500).send(error);
@@ -86,7 +90,9 @@ userRouter.delete("/users", async (req, res) => {
       });
 
       if (!user) {
-        res.status(404).send();
+        res.status(404).send({
+          error: "User not found"
+        });
       } else {
         const result = await Note.deleteMany({ owner: user._id });
 
